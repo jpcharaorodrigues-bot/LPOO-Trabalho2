@@ -1,3 +1,10 @@
+/*
+ * Autores do trabalho:
+ * João Pedro Rodrigues Charão
+ * Pedro Henrique da Silva Mendes
+ * Guilherme Peres Pinto
+ */
+
 package lpoo.sym;
 
 public final class Constant

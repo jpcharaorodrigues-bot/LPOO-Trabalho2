@@ -1,3 +1,10 @@
+/*
+ * Autores do trabalho:
+ * João Pedro Rodrigues Charão
+ * Pedro Henrique da Silva Mendes
+ * Guilherme Peres Pinto
+ */
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,7 +14,9 @@ import lpoo.util.*;
 
 /**
  *
- * @author insert your code here
+ * @author João Pedro Rodrigues Charão
+ * @author Pedro Henrique da Silva Mendes
+ * @author Guilherme Peres Pinto
  */
 public class Main
 {
