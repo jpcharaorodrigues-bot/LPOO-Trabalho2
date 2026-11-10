@@ -17,6 +17,12 @@ diff(cos(x),x)
 diff(loge(x),x)
 diff(x^y,x)
 diff(x^y,y)
+diff(x-y,x)
+diff(x/y,x)
+diff(-x,x)
+
+eval(+x,2,0,0)
+eval(x^y^z,2,3,2)
 
 define f
 f=x*y+z
