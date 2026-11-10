@@ -9,15 +9,15 @@ public final class Minus
   }
 
   @Override
-  public float eval(float x)
+  public float eval(float x, float y, float z)
   {
-    return -e.eval(x);
+    return -e.eval(x, y, z);
   }
 
   @Override
-  public Expression diff()
+  public Expression diff(Expression variable)
   {
-    return (new Minus(e.diff())).simplify();
+    return (new Minus(e.diff(variable))).simplify();
   }
 
   @Override
@@ -30,7 +30,7 @@ public final class Minus
       float v = ((Constant)s).value;
       return 0 == v ? Constant.ZERO : new Constant(-v);
     }
-    return s instanceof Minus ? s : new Minus(s);
+    return s instanceof Minus ? ((Minus)s).e : new Minus(s);
   }
 
 } // Minus

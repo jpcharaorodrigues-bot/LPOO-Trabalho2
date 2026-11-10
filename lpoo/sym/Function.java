@@ -13,17 +13,25 @@ public class Function
     return new Function(NativeFunction.COS, arg);
   }
 
-  @Override
-  public float eval(float x)
+  public static final Function loge(Expression arg)
   {
-    return function.eval(arg.eval(x));
+    return new Function(NativeFunction.LOG, arg);
   }
 
   @Override
-  public Expression diff()
+  public float eval(float x, float y, float z)
   {
-    Expression f = new Function(function.diff(), arg); 
-    return (new Mul(f, arg.diff())).simplify();
+    return function.eval(arg.eval(x, y, z), 0, 0);
+  }
+
+  @Override
+  public Expression diff(Expression variable)
+  {
+    if (function == NativeFunction.LOG)
+      return (new Div(arg.diff(variable), arg)).simplify();
+
+    Expression f = new Function(function.diff(X.INSTANCE), arg);
+    return (new Mul(f, arg.diff(variable))).simplify();
   }
 
   @Override
@@ -44,10 +52,11 @@ public class Function
 } // Function
 
 abstract class NativeFunction
-  extends Expression 
+  extends Expression
 {
   static final NativeFunction SIN = new Sin();
   static final NativeFunction COS = new Cos();
+  static final NativeFunction LOG = new Log();
 
 } // NativeFunction
 
@@ -55,13 +64,13 @@ final class Sin
   extends NativeFunction
 {
   @Override
-  public float eval(float x)
+  public float eval(float x, float y, float z)
   {
     return (float)Math.sin(x);
   }
 
   @Override
-  public Expression diff()
+  public Expression diff(Expression variable)
   {
     return COS;
   }
@@ -78,13 +87,13 @@ final class Cos
   extends NativeFunction
 {
   @Override
-  public float eval(float x)
+  public float eval(float x, float y, float z)
   {
     return (float)Math.cos(x);
   }
 
   @Override
-  public Expression diff()
+  public Expression diff(Expression variable)
   {
     return new Minus(SIN);
   }
@@ -96,3 +105,26 @@ final class Cos
   }
 
 } // Cos
+
+final class Log
+  extends NativeFunction
+{
+  @Override
+  public float eval(float x, float y, float z)
+  {
+    return (float)Math.log(x);
+  }
+
+  @Override
+  public Expression diff(Expression variable)
+  {
+    return new Div(Constant.ONE, X.INSTANCE);
+  }
+
+  @Override
+  public String toString()
+  {
+    return "loge";
+  }
+
+} // Log

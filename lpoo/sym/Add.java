@@ -9,15 +9,15 @@ public final class Add
   }
 
   @Override
-  public float eval(float x)
+  public float eval(float x, float y, float z)
   {
-    return e1.eval(x) + e2.eval(x);
+    return e1.eval(x, y, z) + e2.eval(x, y, z);
   }
 
   @Override
-  public Expression diff()
+  public Expression diff(Expression variable)
   {
-    return (new Add(e1.diff(), e2.diff())).simplify();
+    return (new Add(e1.diff(variable), e2.diff(variable))).simplify();
   }
 
   @Override

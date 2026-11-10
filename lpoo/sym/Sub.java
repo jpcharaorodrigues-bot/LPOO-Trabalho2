@@ -9,15 +9,15 @@ public final class Sub
   }
 
   @Override
-  public float eval(float x)
+  public float eval(float x, float y, float z)
   {
-    return e1.eval(x) - e2.eval(x);
+    return e1.eval(x, y, z) - e2.eval(x, y, z);
   }
 
   @Override
-  public Expression diff()
+  public Expression diff(Expression variable)
   {
-    return (new Sub(e1.diff(), e2.diff())).simplify();
+    return (new Sub(e1.diff(variable), e2.diff(variable))).simplify();
   }
 
   @Override
@@ -28,15 +28,15 @@ public final class Sub
 
     if (s1.isConstant())
     {
-      float v1 = ((Constant)e1).value;
+      float v1 = ((Constant)s1).value;
 
       if (s2.isConstant())
         return new Constant(v1 - ((Constant)s2).value);
       if (0 == v1)
         return new Minus(s2);
     }
-    else if (s2.isConstant() && 0 == ((Constant)e2).value)
-      return e1;
+    else if (s2.isConstant() && 0 == ((Constant)s2).value)
+      return s1;
     return new Sub(s1, s2);
   }
 

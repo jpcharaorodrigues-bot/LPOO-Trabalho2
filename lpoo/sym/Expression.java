@@ -2,8 +2,8 @@ package lpoo.sym;
 
 public abstract class Expression
 {
-  public abstract float eval(float x);
-  public abstract Expression diff();
+  public abstract float eval(float x, float y, float z);
+  public abstract Expression diff(Expression variable);
 
   public Expression simplify()
   {
