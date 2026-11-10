@@ -155,6 +155,7 @@ public abstract class Command
     @Override
     protected boolean run()
     {
+      Console.println("Bye");
       return false;
     }
   };

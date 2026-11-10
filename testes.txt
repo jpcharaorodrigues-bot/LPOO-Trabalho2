@@ -1,0 +1,35 @@
+eval(x+y+z,1,2,3)
+eval(x-y*z,10,2,3)
+eval((x+y)/z,4,2,3)
+eval(-x^2,3,0,0)
+eval(x^y,2,3,0)
+eval(x^(y+z),2,2,1)
+eval(sin(pi/2),0,0,0)
+eval(cos(0),0,0,0)
+eval(loge(e),0,0,0)
+
+diff(x*y+z,x)
+diff(x*y+z,y)
+diff(x*y+z,z)
+diff(x^2,x)
+diff(sin(x),x)
+diff(cos(x),x)
+diff(loge(x),x)
+diff(x^y,x)
+diff(x^y,y)
+
+define f
+f=x*y+z
+eval(f,2,3,4)
+diff(f,x)
+
+define g=x^2+y^2+z^2
+eval(g,1,2,3)
+diff(g,z)
+
+list
+clear f
+list
+clear
+list
+exit
