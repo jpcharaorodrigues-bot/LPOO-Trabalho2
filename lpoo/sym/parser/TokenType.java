@@ -20,6 +20,9 @@ enum TokenType
   NAME,
   EVAL,
   DIFF,
+  DEFINE,
+  CLEAR,
+  LIST,
   EXIT,
   ERROR;
 
@@ -45,6 +48,9 @@ enum TokenType
     "name",
     "eval",
     "diff",
+    "define",
+    "clear",
+    "list",
     "exit",
     "<error>"
   };

@@ -12,17 +12,20 @@ final class Keywords
   {
     map.put(name, new Token(type, name));
   }
-  
+
   static Token get(String name)
   {
     return map.get(name);
   }
-  
+
   static
   {
     map = new TreeMap<>();
     add("eval", TokenType.EVAL);
     add("diff", TokenType.DIFF);
+    add("define", TokenType.DEFINE);
+    add("clear", TokenType.CLEAR);
+    add("list", TokenType.LIST);
     add("exit", TokenType.EXIT);
   }
 
