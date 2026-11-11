@@ -8,4 +8,6 @@ eval(abc,1,2,3)
 clear abc
 list abc
 eval(x,1e,2,3)
+%
+eval(x,1,2,3
 exit

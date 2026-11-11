@@ -20,9 +20,19 @@ diff(x^y,y)
 diff(x-y,x)
 diff(x/y,x)
 diff(-x,x)
+diff(1,x)
+diff(x^(1+1),x)
 
 eval(+x,2,0,0)
+eval(1.5,0,0,0)
 eval(x^y^z,2,3,2)
+
+define neg=-(x+y)
+define sq=(-x)^2
+define dbl=-(-x)
+clear neg
+clear sq
+clear dbl
 
 define f
 f=x*y+z

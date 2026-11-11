@@ -13,7 +13,12 @@ public abstract class UnaryExpression
   @Override
   public String toString()
   {
-    return op + e.toString();
+    boolean parentheses =
+      e.isBinary() || e instanceof UnaryExpression;
+
+    return parentheses ?
+      String.format("%c(%s)", op, e) :
+      op + e.toString();
   }
 
   protected Expression e;

@@ -335,6 +335,12 @@ public class Parser
     throw new ParseException(parseErrorMessages[code], args);
   }
 
+  private void error(String s)
+    throws ParseException
+  {
+    throw new ParseException(s);
+  }
+
   private void error(String s, Object... args)
     throws ParseException
   {

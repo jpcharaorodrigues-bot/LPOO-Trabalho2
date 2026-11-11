@@ -13,7 +13,10 @@ public abstract class BinaryExpression
   @Override
   public String toString()
   {
-    String s1 = String.format(e1.isBinary() ? "(%s)" : "%s", e1);
+    boolean parentheses1 =
+      e1.isBinary() || (op == '^' && e1 instanceof UnaryExpression);
+
+    String s1 = String.format(parentheses1 ? "(%s)" : "%s", e1);
     String s2 = String.format(e2.isBinary() ? "(%s)" : "%s", e2);
 
     return s1 + op + s2;

@@ -31,9 +31,11 @@ public final class Pow
   @Override
   public Expression diff(Expression variable)
   {
-    if (e2.isConstant())
+    Expression exponent = e2.simplify();
+
+    if (exponent.isConstant())
     {
-      float exp = ((Constant)e2).value;
+      float exp = ((Constant)exponent).value;
 
       if (0 == exp)
         return Constant.ZERO;
@@ -44,7 +46,7 @@ public final class Pow
         return bd;
 
       return (new Mul(
-        new Mul(e2, new Pow(e1, exp - 1)),
+        new Mul(exponent, new Pow(e1, exp - 1)),
         bd)).simplify();
     }
 
